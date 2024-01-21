@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DOMPurify from "dompurify";
 
 type Props = {
   inputData: string;
@@ -13,7 +14,7 @@ const MainContainer = ({ inputData }: Props) => {
       .then((response) => response.json())
       .then((json) => {
         console.log({ json });
-        setData(json.html);
+        setData(DOMPurify.sanitize(json.html));
       });
   };
 
@@ -21,8 +22,11 @@ const MainContainer = ({ inputData }: Props) => {
     <div className="min-h-[500px] bg-red-300 p-2">
       Main container
       <br />
-      {data?.html && (
-        <div dangerouslySetInnerHTML={{ __html: "<p>Hello !!!!!!</p>" }} />
+      {data && (
+        <div
+          className="h-screen w-screen"
+          dangerouslySetInnerHTML={{ __html: data }}
+        ></div>
       )}
       <button onClick={handleButtonClick} className="bg-teal-400 p-3 border">
         Send Request
