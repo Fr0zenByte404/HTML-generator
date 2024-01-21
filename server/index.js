@@ -9,8 +9,9 @@ app.use(cors({
 }));
 
 
-app.get('/', (request, response) => {
-    response.json({ html: `<div><p>Hello from server</p></div>` })
+app.get('/', (req, res) => {
+    const text = req.query.text
+    res.json({ html: `<div className="bg-white"><p>Hello, ${text} from server </p></div>`, text })
 })
 
 

@@ -1,7 +1,9 @@
 const Header = () => {
   return (
-    <header className="h-10 drop-shadow-xl bg-slate-400 p-2">
-      HTML Generator
+    <header className="p-2 rounded shadow-md dark:bg-slate-500 w-full  bg-white">
+      <p className="font-extralight">
+        HTML <b className="text-blue-900">Generator</b>
+      </p>
     </header>
   );
 };
