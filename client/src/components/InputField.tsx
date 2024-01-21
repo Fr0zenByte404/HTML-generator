@@ -8,6 +8,10 @@ type InputFieldProps = {
 const InputField = ({ onSubmit }: InputFieldProps) => {
   const [value, setValue] = useState("");
 
+  const handleSubmit = () => {
+    setValue("");
+    onSubmit(value);
+  };
   return (
     <form onSubmit={(e) => e.preventDefault()} className="fixed bottom-0 w-4/6">
       <label htmlFor="chat" className="sr-only">
@@ -22,12 +26,12 @@ const InputField = ({ onSubmit }: InputFieldProps) => {
           onChange={(e) => setValue(e.target.value)}
           value={value}
           onKeyDown={(e) => {
-            if (e.key === "Enter") onSubmit(value);
+            if (e.key === "Enter") handleSubmit();
           }}
         />
         <button
           type="button"
-          onClick={() => onSubmit(value)}
+          onClick={handleSubmit}
           className="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600"
         >
           <SendMessageIcon />

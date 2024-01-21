@@ -15,7 +15,7 @@ function App() {
       .then((response) => response.json())
       .then((json) => {
         console.log({ json });
-        setData(DOMPurify.sanitize(json.html));
+        setData(DOMPurify.sanitize(json.html, { ALLOWED_ATTR: ["className"] }));
       });
   };
 

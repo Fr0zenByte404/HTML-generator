@@ -11,7 +11,7 @@ app.use(cors({
 
 app.get('/', (req, res) => {
     const text = req.query.text
-    res.json({ html: `<div className="bg-white"><p>Hello, ${text} from server </p></div>`, text })
+    res.json({ html: `<p className="text-5xl">${text} </p>` })
 })
 
 
