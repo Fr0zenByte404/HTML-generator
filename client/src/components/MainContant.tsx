@@ -1,14 +1,17 @@
 type Props = {
   data: string | null;
+  searchWord: string | null;
+  isLoading: boolean;
 };
-const MainContainer = ({ data }: Props) => {
+const MainContainer = ({ data, searchWord, isLoading }: Props) => {
   return (
-    <div className="p-2 h-1/2">
-      Main container
+    <div className="min-w-screen p-5">
+      {searchWord}
+      {isLoading && <p>Loading...</p>}
       <br />
       {data && (
         <div
-          className="h-screen w-screen"
+          className="w-screen"
           dangerouslySetInnerHTML={{ __html: data }}
         ></div>
       )}
